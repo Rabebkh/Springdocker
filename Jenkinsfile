@@ -4,12 +4,11 @@ pipeline {
     DOCKERHUB_CREDENTIALS = credentials('dh_cred')
     }
     stages {
-        stage('Checkout') {
+        stage('SCM Checkout') {
             steps {
-            git'https://github.com/Rabebkh/Springdocker.git'
-              checkout scm
+            git 'https://github.com/Rabebkh/Springdocker.git'
             }
-    }
+        }
         stage('Build docker image') {
             steps {
                 sh 'docker build -t rabebkhaled/springapp:$BUILD_ID .'
